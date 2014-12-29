@@ -14,6 +14,9 @@ app.get('/hello', function(req, res) {
 
 
 app.get('/youmi', function(req, res){
+	callback = req.param('callback_url');
+	mac = req.param('mac');
+	ifa = req.param('ifa');
 
 	AV.Cloud.httpRequest({
 		method: 'POST',
@@ -24,7 +27,9 @@ app.get('/youmi', function(req, res){
 			'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
 		},
 		body: {
-			callback: 'testing'
+			'ifa': ifa,
+			'callback': callback,
+			'mac': mac
 		},
 		success: function(httpResponse) {
 			console.log(httpResponse.text);
