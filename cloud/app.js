@@ -13,10 +13,10 @@ app.get('/hello', function(req, res) {
 });
 
 
-app.get('/youmi', function(req, res)){
+app.get('/youmi', function(req, res){
 
 	res.json({});
-};
+});
 
 
 // 最后，必须有这行代码来使 express 响应 HTTP 请求
