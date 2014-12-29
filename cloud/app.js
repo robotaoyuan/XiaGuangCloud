@@ -29,7 +29,8 @@ app.get('/youmi', function(req, res){
 		body: {
 			'ifa': ifa,
 			'callback': callback,
-			'mac': mac
+			'mac': mac,
+			'sent': false
 		},
 		success: function(httpResponse) {
 			console.log(httpResponse.text);
