@@ -22,7 +22,7 @@ app.get('/youmi', function(req, res){
 			'Content-Type': 'application/json',
 			'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
 			'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
-		}
+		},
 		body: {
 			callback: 'testing'
 		},
