@@ -12,5 +12,11 @@ app.get('/hello', function(req, res) {
   res.render('hello', { message: 'Congrats, you just set up your app!' });
 });
 
+
+
 // 最后，必须有这行代码来使 express 响应 HTTP 请求
 app.listen();
+
+app.use(function(req, res, next){
+  res.status(404).render('404', {title: "Sorry, page not found"});
+});
