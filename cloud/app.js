@@ -66,6 +66,10 @@ app.get('/dianping_has_groupBuying',function(req,res){
     });
 });
 
+//大众点评应用key和secret
+var _dzdpAppKey = '57766395';
+var _dzdpSecret = 'bc60b050c4404bb4b6fb4c3739fdac56';
+
 app.post('/update_xiaguang_cloud',function(req,res){
     var shopId = req.body.shopId;
     var objectId = req.body.objectId;
