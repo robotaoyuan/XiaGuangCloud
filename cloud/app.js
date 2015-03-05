@@ -81,7 +81,7 @@ app.post('/update_xiaguang_cloud',function(req,res){
         headers: {
             'Content-Type': 'application/json'
         },
-        url:'http://xiaGuang.avosapps.com//dianping_has_groupBuying?shopId=' + shopId,
+        url:'http://xiaguang.avosapps.com//dianping_has_groupBuying?shopId=' + shopId,
         success: function(response){
             var json = JSON.parse(response.text);
             if (json['status'] == "OK"){
