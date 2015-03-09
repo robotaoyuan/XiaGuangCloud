@@ -2,7 +2,12 @@
 var express = require('express');
 var crypto = require('crypto');
 var querystring = require('querystring');
+var request = require('request');
 var app = express();
+
+//大众点评应用key和secret
+var _dzdpAppKey = '57766395';
+var _dzdpSecret = 'bc60b050c4404bb4b6fb4c3739fdac56';
 
 // App 全局配置
 app.set('views','cloud/views');   // 设置模板目录
@@ -66,9 +71,189 @@ app.get('/dianping_has_groupBuying',function(req,res){
     });
 });
 
-//大众点评应用key和secret
-var _dzdpAppKey = '57766395';
-var _dzdpSecret = 'bc60b050c4404bb4b6fb4c3739fdac56';
+app.get('/existence_PreferentialInformation',function(req,res){
+    var mallObjectId = req.param('objectId');
+    var param = {
+        'mall':{"__type":"Pointer","className":"Mall","objectId":mallObjectId},
+        'switch':true
+    };
+    request.get({
+        url:'https://leancloud.cn/1.1/classes/PreferentialInformation?count=1&limit=0&where='+ JSON.stringify(param),
+        headers:{
+            'Content-Type': 'application/json',
+            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+        }
+    },function(error,response,body){
+        if(!error){
+            var object= JSON.parse(body);
+            if(object["count"] > 0){
+                res.send({
+                    'exidtence':true
+                });
+            }else{
+                var where = {
+                    'mall':{"__type":"Pointer","className":"Mall","objectId":mallObjectId},
+                    'has_deal':true
+                };
+                request.get({
+                    url:'https://leancloud.cn/1.1/classes/Merchant?count=1&limit=0&where=' + JSON.stringify(where),
+                    headers:{
+                        'Content-Type': 'application/json',
+                        'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+                        'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+                    }
+                },function(error,response,body){
+                    if(!error){
+                        body = JSON.parse(body);
+                        if (body['count'] > 0){
+                            res.send({
+                                'exidtence':true
+                            });
+                        }else{
+                            res.send({
+                                'exidtence':false
+                            });
+                        }
+
+                    }else{
+                        res.send({
+                            'exidtence':false
+                        });
+                    }
+                });
+            }
+        }
+    });
+});
+
+
+app.post('/change_merchant',function(req,res){
+    var changeName = req.body.name;
+    var shortName = req.body.shortName;
+    if (shortName == undefined){
+        shortName = changeName;
+    }
+    var icon = req.body.icon;
+    var type = req.body.type;
+    if (type == undefined){
+        type = '待定 待定';
+    }
+    var uniId = req.body.uniId;
+    console.log(changeName);
+    if(uniId == undefined || changeName == undefined){
+        res.send({
+            'status':'Error',
+            'message': '请求参数不正确'
+        });
+    }
+    var params = {
+        'uniId':uniId
+    };
+
+    AV.Cloud.httpRequest({
+        method:'GET',
+        headers:{
+            'Content-Type': 'application/json',
+            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+        },
+        url:'https://leancloud.cn/1.1/classes/Merchant?where=' + JSON.stringify(params),
+        success:function(response){
+            var result = JSON.parse(response.text)['results'][0];
+            var objectId = result['objectId'];
+            // 发送post请求时，body参数要改为字符串
+            request.put({
+               method:'PUT',
+                url:'https://leancloud.cn/1.1/classes/Merchant/' + objectId,
+                headers:{
+                    'Content-Type':'application/json',
+                    'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+                    'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+                },
+                body: JSON.stringify({
+                    'name': changeName,
+                    'shortName': shortName,
+                    'type':type,
+                    'icon':icon
+                })
+            },function(error,response,body){
+                if (error){
+                  res.json({
+                      'status':'Error',
+                      'message':'更新失败'
+                  });
+                }else{
+                    res.json(response);
+                }
+            });
+        },
+        error:function(response){
+            res.json({
+                'message':'更改失败,重新检查参数'
+            });
+        }
+    });
+});
+
+app.post('/add_Merchant',function(req,res){
+    var uniId = req.body.uniId;
+    var merchantName = req.body.name;
+    var shortName = req.body.shortName;
+    var merchantAddress = req.body.address;
+    if (uniId == undefined || merchantName == undefined || shortName == undefined || merchantAddress == undefined){
+        res.success('Error: 参数错误');
+    };
+    request.get({
+        url:'https://leancloud.cn/1.1/classes/Merchant?where=' + JSON.stringify({'uniId':uniId}),
+        headers:{
+            'Content-Type':'application/json',
+            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+        }
+    },function(error,response,body){
+        if(error){
+            res.end({
+                'status':'Error',
+                'message':'获取错误'
+            });
+        }else{
+            var result = JSON.parse(body)['results'];
+            if(result.length == 0){
+                request.post({
+                    url:'https://leancloud.cn/1.1/classes/Merchant',
+                    headers:{
+                        'Content-Type':'application/json',
+                        'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+                        'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+                    },
+                    body: JSON.stringify({
+                        'uniId':uniId,
+                        'name':merchantName,
+                        'shortName':shortName,
+                        'address':merchantAddress
+                    })
+                },function(error,response,body){
+                    if(error){
+                        res.send({
+                           'status':'Error',
+                            'message':'添加店铺失败'
+                        });
+                    }else{
+                        res.send(body);
+                    }
+                });
+            }else{
+                res.send({
+                   'status':'Error',
+                    'message':'该值的对象已经存在'
+                });
+            }
+
+        }
+    });
+
+});
 
 app.post('/update_xiaguang_cloud',function(req,res){
     var shopId = req.body.shopId;
@@ -114,7 +299,6 @@ app.post('/update_xiaguang_cloud',function(req,res){
                         });
                     }
                 });
-
             }
         },
         error: function(response){

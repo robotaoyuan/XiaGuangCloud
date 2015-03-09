@@ -47,3 +47,46 @@ AV.Cloud.define("RefreshMeachantDealData",function(req,res){
         }
     });
 });
+
+AV.Cloud.define('duplicateRemoval',function(req,res){
+    getYoumiObjects(10,0,function(results){
+       if (results != undefined){
+
+       }
+    });
+});
+
+function getYoumiObjects(limit,skip,callback){
+    var queryString = require('querystring');
+    var json = {
+        'limit': limit,
+        'skip':skip
+    };
+    AV.Cloud.httpRequest({
+        url:'https://leancloud.cn/1.1/classes/YoumiRecord?' + queryString.stringify(json),
+        method:'GET',
+        headers:{
+            'Content-Type':'application/json',
+            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+        },
+        success:function(httpResponse){
+            var dictionary = {};
+            var results = JSON.parse(httpResponse.text)['results'];
+            if(results.length <= 0){
+                callback(undefined);
+            }
+            for (var index in results){
+                var object = results[index];
+                var ifa = object['ifa'];
+                dictionary[ifa] = object;
+            }
+            callback(dictionary);
+
+        },
+        error:function(httpResponse){
+            console.log(httpResponse);
+            callback(undefined);
+        }
+    });
+}
