@@ -1,8 +1,9 @@
 // 在 Cloud code 里初始化 Express 框架
 var express = require('express');
-var crypto = require('crypto');
 var querystring = require('querystring');
+var crypto = require('crypto');
 var request = require('request');
+var nodeXlsx = require('node-xlsx');
 var app = express();
 
 //大众点评应用key和secret
@@ -48,6 +49,88 @@ app.get('/youmi', function(req, res){
 	});
 	res.json({});
 });
+
+app.get('/near_mall',function(req,res){
+
+    var latitude = req.query['latitude'];
+    var longitude = req.query['longitude'];
+    if (latitude == undefined || longitude == undefined){
+        res.send({
+            'status':'Error',
+            'message':'参数有误'
+        });
+        return;
+    }
+    var min =  Number.MAX_VALUE;
+    var objectId;
+    getCloudMalls(function(results){
+        if (results == undefined) {
+            res.send({
+                'status':'Error',
+                'message':'请联系管理人员'
+            });
+        }
+        for (var index = 0; index < results.length; ++index){
+            var result = results[index];
+            var latitude2 = result['latitude'];
+            var longitude2 = result['longitude'];
+            var distance = distanceOnParams(latitude,longitude,latitude2,longitude2);
+            if (distance < min){
+                min = distance;
+                objectId = result['objectId'];
+            }
+        }
+
+        res.send({
+            'status':'OK',
+            'nearMallId':objectId,
+            'distance':min
+        });
+    });
+
+
+});
+
+function distanceOnParams(lat1,long1,lat2,long2){
+
+    var EARTH_RADIUS = 6378137.0;
+    var PI = Math.PI;
+    var rad_latitude = lat1 * PI / 180;
+    var rad_latitude2 = lat2 * PI / 180;
+    var rad_longitude = long1 * PI / 180;
+    var rad_longitude2 = long2 * PI / 180;
+
+    var latitude_difference = rad_latitude - rad_latitude2;
+    var longitude_difference = rad_longitude - rad_longitude2;
+
+    // 备选 ： Math.sqrt(Math.pow(latitude_difference,2)  + Math.pow(longitude_difference,2)) * EARTH_RADIUS
+
+    var ditance =  2 * Math.asin(Math.sqrt(Math.pow(Math.sin(latitude_difference / 2),2) + Math.cos(rad_latitude) * Math.cos(rad_latitude2) * Math.pow(Math.sin(longitude_difference / 2),2)));
+    ditance =  ditance * EARTH_RADIUS;
+    ditance = Math.round(ditance * 10000) / 10000.0;
+
+    return ditance;
+}
+
+function getCloudMalls(callback){
+    request({
+        'url':'https://leancloud.cn/1.1/classes/Mall',
+        'headers':{
+            'content-Type':'application/json',
+            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg',
+            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w'
+        }
+    },function(error,res,body){
+        if(!error){
+            var results = JSON.parse(body)['results'];
+            callback(results);
+            return;
+        }else{
+            callback(undefined);
+            return;
+        }
+    });
+};
 
 app.get('/dianping_has_groupBuying',function(req,res){
     var json = {};
@@ -196,11 +279,22 @@ app.post('/change_merchant',function(req,res){
     });
 });
 
-app.post('/add_Merchant',function(req,res){
+app.post('/add_merchant',function(req,res){
     var uniId = req.body.uniId;
     var merchantName = req.body.name;
     var shortName = req.body.shortName;
+    var mallObjectId = req.body.mallObjectId;
+    var mall;
+    if (mallObjectId != undefined){
+        mall = {"__type":"Pointer","className":"Mall","objectId":mallObjectId};
+    }else{
+        mall = undefined;
+    }
     var merchantAddress = req.body.address;
+    var type = req.body.type;
+    if (type == undefined){
+        type = "待定 待定"
+    }
     if (uniId == undefined || merchantName == undefined || shortName == undefined || merchantAddress == undefined){
         res.success('Error: 参数错误');
     };
@@ -213,43 +307,49 @@ app.post('/add_Merchant',function(req,res){
         }
     },function(error,response,body){
         if(error){
-            res.end({
+            res.send({
                 'status':'Error',
                 'message':'获取错误'
             });
         }else{
             var result = JSON.parse(body)['results'];
-            if(result.length == 0){
-                request.post({
-                    url:'https://leancloud.cn/1.1/classes/Merchant',
-                    headers:{
-                        'Content-Type':'application/json',
-                        'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
-                        'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
-                    },
-                    body: JSON.stringify({
-                        'uniId':uniId,
-                        'name':merchantName,
-                        'shortName':shortName,
-                        'address':merchantAddress
-                    })
-                },function(error,response,body){
-                    if(error){
-                        res.send({
-                           'status':'Error',
-                            'message':'添加店铺失败'
-                        });
-                    }else{
-                        res.send(body);
-                    }
-                });
-            }else{
-                res.send({
-                   'status':'Error',
-                    'message':'该值的对象已经存在'
-                });
-            }
 
+            if (result != undefined){
+                if(result.length == 0){
+                    request.post({
+                        url:'https://leancloud.cn/1.1/classes/Merchant',
+                        headers:{
+                            'Content-Type':'application/json',
+                            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+                            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+                        },
+                        body: JSON.stringify({
+                            'uniId':uniId,
+                            'name':merchantName,
+                            'shortName':shortName,
+                            'address':merchantAddress,
+                            'type':type,
+                            'mall':mall
+                        })
+                    },function(error,response,body){
+                        if(error){
+                            res.send({
+                                'status':'Error',
+                                'message':'添加店铺失败'
+                            });
+                        }else{
+                            res.send(body);
+                        }
+                    });
+                }else{
+                    res.send({
+                        'status':'Error',
+                        'message':'该uniId:' + uniId + '的对象已经存在'
+                    });
+                }
+            }else {
+                console.log('merchantName:' + merchantName);
+            }
         }
     });
 
@@ -310,11 +410,58 @@ app.post('/update_xiaguang_cloud',function(req,res){
     });
 });
 
+app.post('/add_merchant_xlsx',function(req,res){
+    var file = req.files.file;
+    var xlsxPath = file['path'];
+    var xlsx  = nodeXlsx.parse(xlsxPath);
+    var dataArray = xlsx[0]['data'];
+    var objectId = '54f9447be4b0ec65c92f73a6';
+    dataArray = removeArrayItem(dataArray,0);
+    for (var index = 0;index < dataArray.length;++index){
+        var objcet = dataArray[index];
+        var uniId = objcet[8];
+        if (typeof uniId == "number"){
+            uniId = JSON.stringify(uniId);
+        }
+        request.post({
+            'url':'http://localhost:3000/add_merchant',
+            'headers':{
+                'content-type':'application/json'
+            },
+            'body':JSON.stringify({
+                'uniId':uniId,
+                'name':objcet[4],
+                'shortName':objcet[4],
+                'address':objcet[7],
+                'mallObjectId':objectId
+            })
+        },function(error,response,body){
+            if(!error){
+                console.log(body);
+            }else{
+
+            }
+        });
+    }
+    res.send();
+});
+
+function removeArrayItem(array,value) {
+    var source = new Array();
+    for (var index = 0;index < array.length; ++index){
+         if (index != value){
+             source.push(array[index]);
+         }
+    }
+    return source;
+}
+
+
 function avCloudHttp(shopId,callBack){
     //参数列表
     var param = {};
     param["business_id"] = shopId;
-    param["sign"] = appSign(param,_dzdpAppKey,_dzdpSecret);
+    param["sign"] = method.appSign(param,_dzdpAppKey,_dzdpSecret);
     param["appkey"] = _dzdpAppKey;
 
     AV.Cloud.httpRequest({

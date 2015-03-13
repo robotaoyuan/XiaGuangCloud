@@ -1,0 +1,10 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "directories": {
+    "jade":"~1.9.1",
+    "node-xlsx":"~0.5.1"
+  }
+
+}
