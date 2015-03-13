@@ -3,7 +3,6 @@ var express = require('express');
 var querystring = require('querystring');
 var crypto = require('crypto');
 var request = require('request');
-var nodeXlsx = require('node-xlsx');
 var app = express();
 
 //大众点评应用key和secret
@@ -410,41 +409,41 @@ app.post('/update_xiaguang_cloud',function(req,res){
     });
 });
 
-app.post('/add_merchant_xlsx',function(req,res){
-    var file = req.files.file;
-    var xlsxPath = file['path'];
-    var xlsx  = nodeXlsx.parse(xlsxPath);
-    var dataArray = xlsx[0]['data'];
-    var objectId = '54f9447be4b0ec65c92f73a6';
-    dataArray = removeArrayItem(dataArray,0);
-    for (var index = 0;index < dataArray.length;++index){
-        var objcet = dataArray[index];
-        var uniId = objcet[8];
-        if (typeof uniId == "number"){
-            uniId = JSON.stringify(uniId);
-        }
-        request.post({
-            'url':'http://localhost:3000/add_merchant',
-            'headers':{
-                'content-type':'application/json'
-            },
-            'body':JSON.stringify({
-                'uniId':uniId,
-                'name':objcet[4],
-                'shortName':objcet[4],
-                'address':objcet[7],
-                'mallObjectId':objectId
-            })
-        },function(error,response,body){
-            if(!error){
-                console.log(body);
-            }else{
-
-            }
-        });
-    }
-    res.send();
-});
+//app.post('/add_merchant_xlsx',function(req,res){
+//    var file = req.files.file;
+//    var xlsxPath = file['path'];
+//    var xlsx  = nodeXlsx.parse(xlsxPath);
+//    var dataArray = xlsx[0]['data'];
+//    var objectId = '54f9447be4b0ec65c92f73a6';
+//    dataArray = removeArrayItem(dataArray,0);
+//    for (var index = 0;index < dataArray.length;++index){
+//        var objcet = dataArray[index];
+//        var uniId = objcet[8];
+//        if (typeof uniId == "number"){
+//            uniId = JSON.stringify(uniId);
+//        }
+//        request.post({
+//            'url':'http://localhost:3000/add_merchant',
+//            'headers':{
+//                'content-type':'application/json'
+//            },
+//            'body':JSON.stringify({
+//                'uniId':uniId,
+//                'name':objcet[4],
+//                'shortName':objcet[4],
+//                'address':objcet[7],
+//                'mallObjectId':objectId
+//            })
+//        },function(error,response,body){
+//            if(!error){
+//                console.log(body);
+//            }else{
+//
+//            }
+//        });
+//    }
+//    res.send();
+//});
 
 function removeArrayItem(array,value) {
     var source = new Array();
