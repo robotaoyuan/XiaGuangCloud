@@ -50,7 +50,6 @@ app.get('/youmi', function(req, res){
 });
 
 app.get('/near_mall',function(req,res){
-
     var latitude = req.query['latitude'];
     var longitude = req.query['longitude'];
     if (latitude == undefined || longitude == undefined){
@@ -61,7 +60,7 @@ app.get('/near_mall',function(req,res){
         return;
     }
     var min =  Number.MAX_VALUE;
-    var objectId;
+    var objectId,mallName,malllocaldbId;
     getCloudMalls(function(results){
         if (results == undefined) {
             res.send({
@@ -75,16 +74,23 @@ app.get('/near_mall',function(req,res){
             var longitude2 = result['longitude'];
             var distance = distanceOnParams(latitude,longitude,latitude2,longitude2);
             if (distance < min){
-                min = distance;
-                objectId = result['objectId'];
+                malllocaldbId = result['localDBId'];
+                if (malllocaldbId != undefined || malllocaldbId != ""){
+                    min = distance;
+                    objectId = result['objectId'];
+                    mallName = result['name'];
+                }
             }
         }
 
         res.send({
             'status':'OK',
             'nearMallId':objectId,
+            'mallName':mallName,
+            'mallLocalDBId':malllocaldbId,
             'distance':min
         });
+        return;
     });
 
 
