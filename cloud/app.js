@@ -61,7 +61,6 @@ app.get('/near_mall',function(req,res){
         }
     }
 
-
     if (latitude == undefined || longitude == undefined){
         res.send({
             'status':'Error',
@@ -72,7 +71,7 @@ app.get('/near_mall',function(req,res){
 
     var min =  Number.MAX_VALUE;
     var objectId,mallName,malllocaldbId;
-    getCloudMalls(maxMallId,function(results){
+    getCloudMalls(function(results){
         if (results == undefined) {
             res.send({
                 'status':'Error',
