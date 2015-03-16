@@ -53,6 +53,15 @@ app.get('/near_mall',function(req,res){
     var latitude = req.query['latitude'];
     var longitude = req.query['longitude'];
     var maxMallId = req.query['maxMallId'];
+    if (maxMallId == undefined){
+        maxMallId = 100000;
+    }else{
+        if((typeof maxMallId) != 'number'){
+            maxMallId = parseInt(maxMallId);
+        }
+    }
+
+
     if (latitude == undefined || longitude == undefined){
         res.send({
             'status':'Error',
@@ -77,7 +86,7 @@ app.get('/near_mall',function(req,res){
             var distance = distanceOnParams(latitude,longitude,latitude2,longitude2);
             if (distance < min){
                 malllocaldbId = result['localDBId'];
-                if (malllocaldbId != undefined || malllocaldbId != ""){
+                if (malllocaldbId != undefined || malllocaldbId != "" || parseInt(malllocaldbId) <= maxMallId){
                     min = distance;
                     objectId = result['objectId'];
                     mallName = result['name'];
@@ -119,12 +128,9 @@ function distanceOnParams(lat1,long1,lat2,long2){
     return ditance;
 }
 
-function getCloudMalls(maxMallId,callback){
-    var whereParam = {
-        'localId':{"$lte":maxMallId}
-    }
+function getCloudMalls(callback){
     request({
-        'url':'https://leancloud.cn/1.1/classes/Mall?where=' + JSON.stringify(whereParam),
+        'url':'https://leancloud.cn/1.1/classes/Mall',
         'headers':{
             'content-Type':'application/json',
             'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg',
