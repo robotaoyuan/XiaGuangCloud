@@ -84,7 +84,7 @@ app.get('/near_mall',function(req,res){
             var longitude2 = result['longitude'];
             var distance = distanceOnParams(latitude,longitude,latitude2,longitude2);
             if (distance < min){
-                malllocaldbId = result['localDBId'];
+                malllocaldbId = result['localId'];
                 if (malllocaldbId != undefined || malllocaldbId != "" || parseInt(malllocaldbId) <= maxMallId){
                     min = distance;
                     objectId = result['objectId'];
