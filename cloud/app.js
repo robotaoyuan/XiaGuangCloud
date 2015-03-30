@@ -109,9 +109,14 @@ app.get('/coupon',function(req,res){
                 for (var index = 0; index < businesses.length; ++index){
                     var business = businesses[index];
                     var coupon = {};
-                    coupon['merchant'] = results[index].objectId;
-                    coupon['deal'] = business.deals[0];
-                    coupons.push(coupon);
+                    results.forEach(function(merchant){
+                        if (merchant.shopId == business.business_id){
+                            console.log(merchant);
+                            coupon['merchant'] = merchant.objectId;
+                            coupon['deal'] = business.deals[0];
+                            coupons.push(coupon);
+                        }
+                    });
                 }
                 res.send(coupons);
             });
@@ -121,6 +126,43 @@ app.get('/coupon',function(req,res){
                 'results':[]
             });
         }
+    });
+});
+
+app.get('/not_icon_merchant',function(req,res){
+    var mallId = '5510f93ee4b0e3088f8d428a';
+    var param = {
+        'mall': {
+            '__type': 'Pointer',
+            'className': 'Mall',
+            'objectId': mallId
+        },
+        'Icon':{
+            '$exists':false
+        }
+    };
+    request.get({
+        'url':'https://leancloud.cn/1.1/classes/Merchant?where=' + JSON.stringify(param),
+        'headers':{
+            'content-Type':'application/json',
+            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg',
+            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w'
+        }
+    },function(error,response,body){
+        if(error){
+            res.send({
+                'status':'Error',
+                'message':'请联系管理员'
+            });
+            return;
+        }
+        var results = JSON.parse(body)['results'];
+        var objects = [];
+        results.forEach(function(object){
+            var merchant = object.name;
+            objects.push(merchant);
+        });
+        res.send(objects);
     });
 });
 
@@ -181,46 +223,6 @@ app.get('/near_mall',function(req,res){
 
 });
 
-function distanceOnParams(lat1,long1,lat2,long2){
-
-    var EARTH_RADIUS = 6378137.0;
-    var PI = Math.PI;
-    var rad_latitude = lat1 * PI / 180;
-    var rad_latitude2 = lat2 * PI / 180;
-    var rad_longitude = long1 * PI / 180;
-    var rad_longitude2 = long2 * PI / 180;
-
-    var latitude_difference = rad_latitude - rad_latitude2;
-    var longitude_difference = rad_longitude - rad_longitude2;
-
-    // 备选 ： Math.sqrt(Math.pow(latitude_difference,2)  + Math.pow(longitude_difference,2)) * EARTH_RADIUS
-
-    var ditance =  2 * Math.asin(Math.sqrt(Math.pow(Math.sin(latitude_difference / 2),2) + Math.cos(rad_latitude) * Math.cos(rad_latitude2) * Math.pow(Math.sin(longitude_difference / 2),2)));
-    ditance =  ditance * EARTH_RADIUS;
-    ditance = Math.round(ditance * 10000) / 10000.0;
-
-    return ditance;
-}
-
-function getCloudMalls(callback){
-    request({
-        'url':'https://leancloud.cn/1.1/classes/Mall',
-        'headers':{
-            'content-Type':'application/json',
-            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg',
-            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w'
-        }
-    },function(error,res,body){
-        if(!error){
-            var results = JSON.parse(body)['results'];
-            callback(results);
-            return;
-        }else{
-            callback(undefined);
-            return;
-        }
-    });
-};
 
 app.get('/dianping_has_groupBuying',function(req,res){
     var json = {};
@@ -497,42 +499,6 @@ app.post('/update_xiaguang_cloud',function(req,res){
     });
 });
 
-//app.post('/add_merchant_xlsx',function(req,res){
-//    var file = req.files.file;
-//    var xlsxPath = file['path'];
-//    var xlsx  = nodeXlsx.parse(xlsxPath);
-//    var dataArray = xlsx[0]['data'];
-//    var objectId = '54f9447be4b0ec65c92f73a6';
-//    dataArray = removeArrayItem(dataArray,0);
-//    for (var index = 0;index < dataArray.length;++index){
-//        var objcet = dataArray[index];
-//        var uniId = objcet[8];
-//        if (typeof uniId == "number"){
-//            uniId = JSON.stringify(uniId);
-//        }
-//        request.post({
-//            'url':'http://localhost:3000/add_merchant',
-//            'headers':{
-//                'content-type':'application/json'
-//            },
-//            'body':JSON.stringify({
-//                'uniId':uniId,
-//                'name':objcet[4],
-//                'shortName':objcet[4],
-//                'address':objcet[7],
-//                'mallObjectId':objectId
-//            })
-//        },function(error,response,body){
-//            if(!error){
-//                console.log(body);
-//            }else{
-//
-//            }
-//        });
-//    }
-//    res.send();
-//});
-
 function removeArrayItem(array,value) {
     var source = new Array();
     for (var index = 0;index < array.length; ++index){
@@ -588,5 +554,47 @@ function appSign(param,appkey,secret){
     var sign =  crypto.createHash('sha1').update(shaSource , 'utf8').digest('hex').toUpperCase();
     return sign;
 }
+
+function distanceOnParams(lat1,long1,lat2,long2){
+
+    var EARTH_RADIUS = 6378137.0;
+    var PI = Math.PI;
+    var rad_latitude = lat1 * PI / 180;
+    var rad_latitude2 = lat2 * PI / 180;
+    var rad_longitude = long1 * PI / 180;
+    var rad_longitude2 = long2 * PI / 180;
+
+    var latitude_difference = rad_latitude - rad_latitude2;
+    var longitude_difference = rad_longitude - rad_longitude2;
+
+    // 备选 ： Math.sqrt(Math.pow(latitude_difference,2)  + Math.pow(longitude_difference,2)) * EARTH_RADIUS
+
+    var ditance =  2 * Math.asin(Math.sqrt(Math.pow(Math.sin(latitude_difference / 2),2) + Math.cos(rad_latitude) * Math.cos(rad_latitude2) * Math.pow(Math.sin(longitude_difference / 2),2)));
+    ditance =  ditance * EARTH_RADIUS;
+    ditance = Math.round(ditance * 10000) / 10000.0;
+
+    return ditance;
+}
+
+function getCloudMalls(callback){
+    request({
+        'url':'https://leancloud.cn/1.1/classes/Mall',
+        'headers':{
+            'content-Type':'application/json',
+            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg',
+            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w'
+        }
+    },function(error,res,body){
+        if(!error){
+            var results = JSON.parse(body)['results'];
+            callback(results);
+            return;
+        }else{
+            callback(undefined);
+            return;
+        }
+    });
+};
+
 // 最后，必须有这行代码来使 express 响应 HTTP 请求
 app.listen();
