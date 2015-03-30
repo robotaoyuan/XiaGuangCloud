@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5dfd8dc4-03f6-4e3a-ae7a-6847d6e174e5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud/app.js" afterPath="$PROJECT_DIR$/cloud/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5dfd8dc4-03f6-4e3a-ae7a-6847d6e174e5" name="Default" comment="" />
     <ignored path="XiaGuangCloud.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +27,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cloud/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4307116" vertical-offset="1375" max-vertical-offset="9090">
-              <caret line="107" column="33" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
+            <state vertical-scroll-proportion="-1.6853932" vertical-offset="1500" max-vertical-offset="9090">
+              <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -637,8 +634,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cloud/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4307116" vertical-offset="1375" max-vertical-offset="9090">
-          <caret line="107" column="33" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
+        <state vertical-scroll-proportion="-1.6853932" vertical-offset="1500" max-vertical-offset="9090">
+          <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
           <folding />
         </state>
       </provider>
