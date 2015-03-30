@@ -23,7 +23,7 @@ AV.Cloud.define("RefreshMeachantDealData",function(req,res){
                 var object = result["results"][index];
                 AV.Cloud.httpRequest({
                     method:'POST',
-                    url:"http://xiaguang.avosapps.com/update_xiaguang_cloud",
+                    url:"http://localhost:3000/update_xiaguang_cloud",
                     headers: {
                         'Content-Type': 'application/json'
                     },
