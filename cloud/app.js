@@ -109,7 +109,7 @@ app.get('/coupon',function(req,res){
                 for (var index = 0; index < businesses.length; ++index){
                     var business = businesses[index];
                     var coupon = {};
-                    coupon['merchant'] = results[index];
+                    coupon['merchant'] = results[index].objectId;
                     coupon['deal'] = business.deals[0];
                     coupons.push(coupon);
                 }
