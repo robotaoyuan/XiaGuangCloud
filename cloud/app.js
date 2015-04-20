@@ -223,7 +223,65 @@ app.get('/near_mall',function(req,res){
 
 });
 
+app.get('/new_near_mall',function(req,res){
+    var latitude = req.query['latitude'];
+    var longitude = req.query['longitude'];
+    var localMallIds = req.query['localMallIds'];
 
+    if (latitude == undefined || longitude == undefined){
+        res.send({
+            'status':'Error',
+            'message':'参数有误'
+        });
+        return;
+    }
+    var mallcount = 0;
+    var min =  Number.MAX_VALUE;
+    var objectId,mallName,malllocaldbId;
+    localMallIds.forEach(function(mallLocalId){
+        if (typeof malllocalId != 'number'){
+            mallLocalId = parseInt(malllocalId);
+        }
+        var param = {
+            'localId':mallLocalId,
+            'ready':true
+        };
+        request({
+            url:'https://leancloud.cn/1.1/classes/Mall?where=' + JSON.stringify(param),
+            headers:{
+                'Content-Type': 'application/json',
+                'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w',
+                'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg'
+            }
+        },function(error,response,body){
+            var results = JSON.parse(body)['results'];
+            ++mallcount;
+            if (results.length > 0){
+                var  result = results[0];
+                var latitude2 = result['latitude'];
+                var longitude2 = result['longitude'];
+                var distance = distanceOnParams(latitude,longitude,latitude2,longitude2);
+                if (distance < min){
+                    malllocaldbId = result['localId'];
+                    if (malllocaldbId != undefined || malllocaldbId != "" || parseInt(malllocaldbId) <= maxMallId){
+                        min = distance;
+                        objectId = result['objectId'];
+                        mallName = result['name'];
+                    }
+                }
+            }
+            if(mallcount == localMallIds.length){
+                res.send({
+                    'status':'OK',
+                    'nearMallId':objectId,
+                    'name':mallName,
+                    'localId':malllocaldbId,
+                    'distance':min
+                });
+            }
+        });
+    });
+});
 app.get('/dianping_has_groupBuying',function(req,res){
     var json = {};
     var shopId = req.param("shopId");
@@ -444,7 +502,6 @@ app.post('/add_merchant',function(req,res){
             }
         }
     });
-
 });
 
 app.post('/update_xiaguang_cloud',function(req,res){
@@ -459,7 +516,7 @@ app.post('/update_xiaguang_cloud',function(req,res){
     shopId = parseInt(shopId);
     AV.Cloud.httpRequest({
         method:'GET',
-        url:'http://xiaguang.avosapps.com/dianping_has_groupBuying?shopId=' + shopId,
+        url:'http://localhost:3000/dianping_has_groupBuying?shopId=' + shopId,
         success: function(response){
             var json = JSON.parse(response.text);
             if (json['status'] == "OK"){
@@ -522,10 +579,16 @@ function avCloudHttp(shopId,callBack){
         url:'http://api.dianping.com/v1/business/get_single_business?' + querystring.stringify(param),
         success:function(httpResults){
             var result = JSON.parse(httpResults.text);
-            var _has;
             if (result['status'] == 'OK'){
-                var businesses = result['businesses'][0];
-                callBack(businesses['has_deal']);
+                var has = undefined;
+                var businesses = result['businesses'];
+                if (businesses.length > 0){
+                    has = businesses['has_deal'];
+
+                }else{
+                    has = false;
+                }
+                callBack(has);
             }
         },
         error: function(httpResults){
@@ -575,6 +638,7 @@ function distanceOnParams(lat1,long1,lat2,long2){
 
     return ditance;
 }
+
 
 function getCloudMalls(callback){
     request({
