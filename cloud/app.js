@@ -240,7 +240,7 @@ app.get('/new_near_mall',function(req,res){
     var objectId,mallName,malllocaldbId;
     localMallIds.forEach(function(mallLocalId){
         if (typeof malllocalId != 'number'){
-            mallLocalId = parseInt(malllocalId);
+            mallLocalId = parseInt(mallLocalId);
         }
         var param = {
             'localId':mallLocalId,
