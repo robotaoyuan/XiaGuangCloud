@@ -114,7 +114,7 @@ app.get('/coupon',function(req,res){
                             console.log(merchant);
                             coupon['merchant'] = merchant.objectId;
                             coupon['name'] = merchant.name;
-                            coupon['icon'] = merchant.Icon;
+                            coupon['icon'] = merchant.Icon.url;
                             coupon['deal'] = business.deals[0];
                             coupons.push(coupon);
                         }
