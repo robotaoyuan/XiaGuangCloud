@@ -111,16 +111,95 @@ app.get('/coupon',function(req,res){
                     var coupon = {};
                     results.forEach(function(merchant){
                         if (merchant.shopId == business.business_id){
-                            console.log(merchant);
                             coupon['merchant'] = merchant.objectId;
-                            coupon['name'] = merchant.name;
-                            coupon['icon'] = merchant.Icon.url;
                             coupon['deal'] = business.deals[0];
                             coupons.push(coupon);
                         }
                     });
                 }
                 res.send(coupons);
+            });
+        }else{
+            res.send({
+                'status':'OK',
+                'results':[]
+            });
+        }
+    });
+});
+
+app.get('/coupon_1',function(req,res){
+    var count = req.param('count');
+    var mallId = req.param('mallId');
+    var param = {
+        'has_deal':true,
+        'mall':{
+            '__type':'Pointer',
+            'className':'Mall',
+            'objectId':mallId
+        },
+        'shopId':{
+            '$exists':true,
+            '$nin':['',' ']
+        }
+    };
+    request.get({
+        'url':'https://leancloud.cn/1.1/classes/Merchant?limit=' + count + '&where=' + JSON.stringify(param),
+        'headers':{
+            'content-Type':'application/json',
+            'X-AVOSCloud-Application-Key': 'kzx1ajhbxkno0v564rcremcz18ub0xh2upbjabbg5lruwkqg',
+            'X-AVOSCloud-Application-Id': 'p8eq0otfz420q56dsn8s1yp8dp82vopaikc05q5h349nd87w'
+        }
+    },function(error,response,body){
+        if(error){
+            res.send({
+                'status':'Error',
+                'message':'请联系管理人员解决'
+            });
+            return;
+        }
+        var results = JSON.parse(body)['results'];
+        if (results.length > 0){
+            var shopIds = undefined;
+            results.forEach(function(result){
+                if(shopIds == undefined){
+                    shopIds = result.shopId;
+                }else{
+                    shopIds = shopIds + ',' + result.shopId;
+                }
+            });
+            param = {};
+            param['business_ids'] = shopIds;
+            param['sign'] = appSign(param,_dzdpAppKey,_dzdpSecret);
+            param['appkey'] = _dzdpAppKey;
+            request.get({
+                'url':'http://api.dianping.com/v1/business/get_batch_businesses_by_id?' + querystring.stringify(param)
+            },function(error,response,body){
+                if(error){
+                    res.send({
+                        'status':'Error',
+                        'message':'请联系管理人员解决'
+                    });
+                    return;
+                }
+                var result = JSON.parse(body);
+                var businesses = result.businesses;
+                var coupons = [];
+                for (var index = 0; index < businesses.length; ++index){
+                    var business = businesses[index];
+                    var coupon = {};
+                    results.forEach(function(merchant){
+                        if (merchant.shopId == business.business_id){
+                            coupon['merchant'] = merchant.objectId;
+                            coupon['name'] = merchant.name;
+                            coupon['icon'] = merchant.Icon.url;
+                            coupon['shopId'] = merchant.shopId;
+                            coupon['deal'] = business.deals[0];
+                            coupons.push(coupon);
+                        }
+                    });
+                }
+                res.send({'results':coupons});
             });
         }else{
             res.send({
