@@ -113,6 +113,8 @@ app.get('/coupon',function(req,res){
                         if (merchant.shopId == business.business_id){
                             console.log(merchant);
                             coupon['merchant'] = merchant.objectId;
+                            coupon['name'] = merchant.name;
+                            coupon['icon'] = merchant.Icon;
                             coupon['deal'] = business.deals[0];
                             coupons.push(coupon);
                         }
