@@ -194,6 +194,8 @@ app.get('/coupon_1',function(req,res){
                             coupon['name'] = merchant.name;
                             coupon['icon'] = merchant.Icon.url;
                             coupon['shopId'] = merchant.shopId;
+                            coupon['address'] = merchant.address;
+                            coupon['type'] = merchant.type;
                             coupon['deal'] = business.deals[0];
                             coupons.push(coupon);
                         }
