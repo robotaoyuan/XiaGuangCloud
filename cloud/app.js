@@ -62,6 +62,9 @@ app.get('/coupon',function(req,res){
         'shopId':{
             '$exists':true,
             '$nin':['',' ']
+        },
+        'Icon':{
+            '$exists':true
         }
     };
     request.get({
@@ -141,6 +144,9 @@ app.get('/coupon_1',function(req,res){
         'shopId':{
             '$exists':true,
             '$nin':['',' ']
+        },
+        'Icon':{
+            '$exists':true
         }
     };
     request.get({
