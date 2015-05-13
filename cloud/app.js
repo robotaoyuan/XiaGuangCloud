@@ -2,6 +2,7 @@
 var express = require('express');
 var querystring = require('querystring');
 var crypto = require('crypto');
+var path = require('path');
 var request = require('request');
 var app = express();
 
@@ -13,12 +14,12 @@ var _dzdpSecret = 'bc60b050c4404bb4b6fb4c3739fdac56';
 app.set('views','cloud/views');   // 设置模板目录
 app.set('view engine', 'ejs');    // 设置 template 引擎
 app.use(express.bodyParser());    // 读取请求 body 的中间件
+app.use(express.static(path.join(__dirname,'public')));
 
 // 使用 Express 路由 API 服务 /hello 的 HTTP GET 请求
 app.get('/hello', function(req, res) {
 	res.render('hello', { message: 'Congrats, you just set up your app!' });
 });
-
 
 app.get('/youmi', function(req, res){
 	callback = req.param('callback_url');
@@ -371,6 +372,7 @@ app.get('/new_near_mall',function(req,res){
         });
     });
 });
+
 app.get('/dianping_has_groupBuying',function(req,res){
     var json = {};
     var shopId = req.param("shopId");
@@ -448,6 +450,7 @@ app.get('/existence_PreferentialInformation',function(req,res){
         }
     });
 });
+
 
 
 app.post('/change_merchant',function(req,res){
