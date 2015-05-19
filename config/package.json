@@ -1,8 +1,13 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
+  "name": "xiaGuang",
+  "version": "1.0.0",
+  "email": "dev@yuntop.io",
+  "Author": {
+      "name": "Silence",
+      "email": "hanbing0208@vip.qq.com"
+  },
   "dependencies": {
-    "request": "2.55.0",
-    "async" : "0.9.0"
+      "request": "2.55.0",
+      "async" : "0.9.0"
   }
 }
