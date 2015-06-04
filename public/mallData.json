@@ -1,93 +1,142 @@
 [{
-  "mallName" : "宝能太古城",
-  "mallDescription": "宝能太古城位于南山后海湾核心位置，该区域东、南临深圳湾，北接南山区RBD中心，紧邻香港西部通道，是深圳最后一个大型滨海高尚住宅区。宝能太古城由17座24-32层的高层建筑组成，以工业八路分为南北两区，并由空中走廊连通南北两区。北区主力户型为130-170平方米3-4房，207-306平方米4-5房及顶层复式；南区主力户型为40-89平方米1-3房，全部精装修交楼。",
-  "floors": [{"floorName" : "L1","floorMapName" :"BAONENG_L1.png"},
-    {"floorName" : "L2","floorMapName" :"BAONENG_L2.png"},
-    {"floorName" : "L3","floorMapName" :"BAONENG_L3.png"},
-    {"floorName" : "B1","floorMapName" :"BAONENG_B1.png"},
-    {"floorName" : "B2","floorMapName" :"BAONENG_B2.png"}]
-},
-  {
-    "mallName" : "地王购物中心",
-    "mallDescription": "深圳地王购物中心位于深圳市深南东路5002号信兴广场地王商业大楼地王商场，面积逾22000平方米，楼高5层，云集精品服饰、皮具、餐饮、珠宝首饰、化妆品、健身、美容美发等各类高档商家。",
-    "floors": [{"floorName" : "G","floorMapName" :"DIWANGGOUWU_G.png"},
-      {"floorName" : "LG","floorMapName" :"DIWANGGOUWU_LG.png"},
-      {"floorName" : "L2","floorMapName" :"DIWANGGOUWU_2F.png"},
-      {"floorName" : "L3","floorMapName" :"DIWANGGOUWU_3F.png"},
-      {"floorName" : "L4","floorMapName" :"DIWANGGOUWU_4F.png"}]
-  },
-  {
     "mallName" : "海岸城",
     "mallDescription": "海岸城是由江阴市海岸投资有限公司开发建设，项目共分A、B、C、D四大板块，总建筑面积近60万方，总投资20亿元，旨在打造中央商务区面积最大、涉及面最广、影响最深远的超大型社区。首批开发A、C地块，总建面积近30万方。",
-    "floors": [{"floorName" : "主L1","floorMapName" :"HAIANCHENG_L1.png"},
-      {"floorName" : "主L2","floorMapName" :"HAIANCHENG_L2.png"},
-      {"floorName" : "主L3","floorMapName" :"HAIANCHENG_L3.png"},
+    "floors": [{"floorName" : "主L5","floorMapName" :"HAIANCHENG_L5.png"},
       {"floorName" : "主L4","floorMapName" :"HAIANCHENG_L4.png"},
-      {"floorName" : "主L5","floorMapName" :"HAIANCHENG_L5.png"},
-      {"floorName" : "东L1","floorMapName" :"N_HAIANCHENG_EASTL1.png"},
+      {"floorName" : "主L3","floorMapName" :"HAIANCHENG_L3.png"},
+      {"floorName" : "主L2","floorMapName" :"HAIANCHENG_L2.png"},
+      {"floorName" : "主L1","floorMapName" :"HAIANCHENG_L1.png"},
       {"floorName" : "东L2","floorMapName" :"N_HAIANCHENG_EASTL2.png"},
-      {"floorName" : "西L1","floorMapName" :"N_HAIANCHENG_WESTL1.png"},
+      {"floorName" : "东L1","floorMapName" :"N_HAIANCHENG_EASTL1.png"},
+      {"floorName" : "西L3","floorMapName" :"N_HAIANCHENG_WESTL3.png"},
       {"floorName" : "西L2","floorMapName" :"N_HAIANCHENG_WESTL2.png"},
-      {"floorName" : "西L3","floorMapName" :"N_HAIANCHENG_WESTL3.png"}]
+      {"floorName" : "西L1","floorMapName" :"N_HAIANCHENG_WESTL1.png"}]
   },
   {
-    "mallName" : "海雅缤纷城",
-    "mallDescription": "海雅缤纷城(原名海雅广场)于2013年9月13日正式开业。建成后成为深圳西部最大的商业综合体。",
-    "floors": [{"floorName" : "L1","floorMapName" :"HAIYABINFENCHENG_BA_L1.png"},
-      {"floorName" : "L2","floorMapName" :"HAIYABINFENCHENG_BA_L2.png"},
-      {"floorName" : "L3","floorMapName" :"HAIYABINFENCHENG_BA_L3.png"},
-      {"floorName" : "L4","floorMapName" :"HAIYABINFENCHENG_BA_L4.png"},
-      {"floorName" : "L5","floorMapName" :"HAIYABINFENCHENG_BA_L5.png"},
-      {"floorName" : "L6","floorMapName" :"HAIYABINFENCHENG_BA_L6.png"},
-      {"floorName" : "L7","floorMapName" :"HAIYABINFENCHENG_BA_L7.png"},
-      {"floorName" : "B1","floorMapName" :"HAIYABINFENCHENG_BA_B1.png"}]
+    "mallName" : "KK MALL",
+    "mallDescription": "KK mall ，商业建筑面积达83500平方米，共五层，整体建筑形态完美，功能设施均达国际水准，基于深圳地标建筑、周边高星级酒店、写字楼众多，数十万等高端消费群集中、谋求差异化特色经营等特点，KK mall定位于“国际时尚精品购物中心”，致力于打造一个以集国际顶尖品牌及各种高端消费业态于一体的高品质国际购物中心，同时为深圳高端购物中心商圈焕发“第二春”揭开序幕。",
+    "floors": [{"floorName" : "L4","floorMapName" :"N_KKMALL_L4.png"},
+      {"floorName" : "L3","floorMapName" :"N_KKMALL_L3.png"},
+      {"floorName" : "L2","floorMapName" :"N_KKMALL_L2.png"},
+      {"floorName" : "L1","floorMapName" :"N_KKMALL_L1.png"},
+      {"floorName" : "B1","floorMapName" :"N_KKMALL_B1.png"}]
+  },
+  {
+    "mallName" : "京基百纳广场(南山)",
+    "mallDescription": "深圳市京基百纳商业管理有限公司成立于2006年，是一家专业从事商业经营管理，提供全面化、系统化、专业化经营管理服务的公司，致力于打造成为中国商业地产服务标杆企业。公司的主营业务为商业地产投资及运营管理，在注重有效整合内部资源的同时，不断吸纳外部优秀资源。在管理和服务中实现自我规范、升级成长，现已通过ISO9001质量管理体系认证。公司努力铸造“管理体现服务、服务提升管理”的商业文化，在不断完善中致力于成为国内一流的专业商业管理公司。",
+    "floors": [{"floorName" : "L3","floorMapName" :"N_JINGJIBAINA_L3.png"},
+      {"floorName" : "L2","floorMapName" :"N_JINGJIBAINA_L2.png"},
+      {"floorName" : "L1","floorMapName" :"N_JINGJIBAINA_L1.png"},
+      {"floorName" : "B1","floorMapName" :"N_JINGJIBAINA_B1.png"}]
   },
   {
     "mallName" : "皇庭广场",
     "mallDescription": "皇庭广场 – 深圳CBD的钻石之心，为高端及中端国际品牌的旗舰店。整个项目占地约42，300平方米，建筑面积约104，000平方米， 是一个名副其实的世界级购物中心。",
-    "floors": [{"floorName" : "L1","floorMapName" :"HUANGTING_L1.png"},
-      {"floorName" : "L2","floorMapName" :"HUANGTING_L2.png"},
+    "floors": [{"floorName" : "L2","floorMapName" :"HUANGTING_L2.png"},
+      {"floorName" : "L1","floorMapName" :"HUANGTING_L1.png"},
       {"floorName" : "G","floorMapName" :"HUANGTING_G.png"},
       {"floorName" : "B1","floorMapName" :"HUANGTING_B1.png"}]
   },
   {
+    "mallName" : "益田假日广场",
+    "mallDescription": "益田假日广场， 中国首家国际化体验式购物中心，是商业与生活的完美融合， 地处深圳华侨城，紧临深南大道，占地3.5万平方米，总建筑面积13.58万平方米，是一个集体验式购物中心、生态写字体、五星级主题酒店为一体的大型建筑综合体。",
+    "floors": [{"floorName" : "L3","floorMapName" :"N_YITIAN_L3.png"},
+      {"floorName" : "L2","floorMapName" :"N_YITIAN_L2.png"},
+      {"floorName" : "L1","floorMapName" :"N_YITIAN_L1.png"},
+      {"floorName" : "B1","floorMapName" :"N_YITIAN_B1.png"},
+      {"floorName" : "B2","floorMapName" :"N_YITIAN_B2.png"}]
+  },
+  {
     "mallName" : "欢乐海岸",
     "mallDescription": "欢乐海岸地处深圳湾商圈核心位置，位于深圳华侨城主题公园群与滨海大道之间，是深圳市\"塘郎山--华侨城--深圳湾\"城市功能轴的起点，是深圳市致力打造的高品质人文旅游、国际创意生活空间的中心。欢乐海岸汇聚全球大师智慧，以海洋文化为主题，以生态环保为理念，以创新型商业为主体，以创造都市滨海健康生活为梦想，开创性地将主题商业与滨海旅游、休闲娱乐和文化创意融为一体，整合零售、餐饮、娱乐、办公、公寓、酒店、湿地公园等多元业态，形成独一无二的商业+娱乐+文化+旅游+生态的全新商业模式，真正实现集主题商业、时尚娱乐、健康生活三位一体的价值组合，以实际行动推动中国主题商业的创新和发展。",
-    "floors": [{"floorName" : "购物中心G","floorMapName" :"HUANLEHAIANGOUWU_G.png"},
-      {"floorName" : "购物中心L1","floorMapName" :"HUANLEHAIANGOUWU_L1.png"},
-      {"floorName" : "购物中心L2","floorMapName" :"HUANLEHAIANGOUWU_L2.png"},
+    "floors": [{"floorName" : "曲水湾","floorMapName" :"N_HUANLEHAIAN.png.png"},
       {"floorName" : "购物中心L3","floorMapName" :"HUANLEHAIANGOUWU_L3.png"},
-      {"floorName" : "曲水湾","floorMapName" :"N_HUANLEHAIAN.png"}]
+      {"floorName" : "购物中心L2","floorMapName" :"HUANLEHAIANGOUWU_L2.png"},
+      {"floorName" : "购物中心L1","floorMapName" :"HUANLEHAIANGOUWU_L1.png"},
+      {"floorName" : "购物中心G","floorMapName" :"HUANLEHAIANGOUWU_G"}]
+  },
+  {
+    "mallName" : "深国投广场",
+    "mallDescription": "暂无介绍",
+    "floors": [{"floorName" : "L3","floorMapName" :"N_SHENGUOTOU_L3.png"},
+      {"floorName" : "L2","floorMapName" :"N_SHENGUOTOU_L2.png"},
+      {"floorName" : "L1","floorMapName" :"N_SHENGUOTOU_L1.png"},
+      {"floorName" : "B1","floorMapName" :"N_SHENGUOTOU_B1.png"}]
+  },
+  {
+    "mallName" : "海雅缤纷城",
+    "mallDescription": "海雅缤纷城(原名海雅广场)于2013年9月13日正式开业。建成后成为深圳西部最大的商业综合体。该商圈将集主力商场、步行街、大型影剧院、观光长廊、特色名店、消费体验店、时尚概念点于一体，可满足顾客全方位的消费需求。",
+    "floors": [{"floorName" : "L7","floorMapName" :"HAIYABINFENCHENG_BA_L7.png"},
+      {"floorName" : "L6","floorMapName" :"HAIYABINFENCHENG_BA_L6.png"},
+      {"floorName" : "L5","floorMapName" :"HAIYABINFENCHENG_BA_L5.png"},
+      {"floorName" : "L4","floorMapName" :"HAIYABINFENCHENG_BA_L4.png"},
+      {"floorName" : "L3","floorMapName" :"HAIYABINFENCHENG_BA_L3.png"},
+      {"floorName" : "L2","floorMapName" :"HAIYABINFENCHENG_BA_L2.png"},
+      {"floorName" : "L1","floorMapName" :"HAIYABINFENCHENG_BA_L1.png"},
+      {"floorName" : "B1","floorMapName" :"HAIYABINFENCHENG_BA_B1.png"}]
+  },
+  {
+    "mallName" : "COCOPRAK(福田)",
+    "mallDescription": "COCO Park是深圳最具时尚气质的购物中心，集餐饮、购物、休闲、娱乐多功能于一体。拥有200余家国际国内知名品牌。负一楼为吉之岛超市、国际连锁餐饮、珠宝配饰、个人护理、家居生活、影音、礼品店。",
+    "floors": [{"floorName" : "L3","floorMapName" :"N_COCOPARK_L3.png"},
+      {"floorName" : "L2","floorMapName" :"N_COCOPARK_L2.png"},
+      {"floorName" : "L1","floorMapName" :"N_COCOPARK_L1.png"},
+      {"floorName" : "B1","floorMapName" :"N_COCOPARK_B1.png"}]
+  },
+  {
+    "mallName" : "万象城",
+    "mallDescription": "万象城（MIXC）是世界500强企业华润集团旗下开发的高品质购物中心，是中国购物中心行业的领跑者，万象城倡导国际化的消费理念，彰显时尚品味与优雅格调，引领全新的生活方式与消费潮流，它也是这座城市的超市名片。",
+    "floors": [{"floorName" : "L5","floorMapName" :"WANXIANGCHENG_L5.png"},
+      {"floorName" : "L4","floorMapName" :"WANXIANGCHENG_L4.png"},
+      {"floorName" : "L3","floorMapName" :"WANXIANGCHENG_L3.png"},
+      {"floorName" : "L2","floorMapName" :"WANXIANGCHENG_L2.png"},
+      {"floorName" : "L1","floorMapName" :"WANXIANGCHENG_L1.png"}]
+  },
+  {
+    "mallName" : "怡景中心城",
+    "mallDescription": "深圳市怡景中心城商业发展有限公司成立于2002年，是由深圳市怡景投资发展有限公司投资控股的一家商业地产类企业，公司于2002年投资七亿人民币开发。中心城位于深圳中心区CBD中央，由福华路、福华一路、中心四路、中心五路合围而成。",
+    "floors": [{"floorName" : "L","floorMapName" :"ZHONGXINCHENG_L.png"},
+      {"floorName" : "G","floorMapName" :"ZHONGXINCHENG_G.png"},
+      {"floorName" : "UG","floorMapName" :"ZHONGXINCHENG_UG.png"}]
+  },
+  {
+    "mallName" : "地王购物中心",
+    "mallDescription": "深圳地王购物中心位于深圳市深南东路5002号信兴广场地王商业大楼地王商场，面积逾22000平方米，楼高5层，云集精品服饰、皮具、餐饮、珠宝首饰、化妆品、健身、美容美发等各类高档商家。",
+    "floors": [{"floorName" : "L4","floorMapName" :"DIWANGGOUWU_L4.png"},
+      {"floorName" : "L3","floorMapName" :"DIWANGGOUWU_L3.png"},
+      {"floorName" : "L2","floorMapName" :"DIWANGGOUWU_L2.png"},
+      {"floorName" : "G","floorMapName" :"DIWANGGOUWU_G.png"},
+      {"floorName" : "LG","floorMapName" :"DIWANGGOUWU_LG.png"}]
   },
   {
     "mallName" : "欢乐颂",
     "mallDescription": "深圳欢乐颂购物中心（南山店），是华润万家倾力打造的梦想之城，定位以所在区域家庭消费者为主要对象，兼顾商务及旅游顾客。经营面积40000——100000平方米，销售高达8万种商品，不仅具备日常购物、休闲、餐饮、文化、金融等服务功能，更是迎合了消费者的“快乐消费”心态，增强了购物中心的游乐场、剧场、影院等娱乐功能，为消费者带来“一站式消费”和“快乐消费”的双重体验。",
-    "floors": [{"floorName" : "L1","floorMapName" :"HUANLESONG_L1.png"},
-      {"floorName" : "L2","floorMapName" :"HUANLESONG_L2.png"},
-      {"floorName" : "L3","floorMapName" :"HUANLESONG_L3.png"},
+    "floors": [{"floorName" : "L5","floorMapName" :"HUANLESONG_L5.png"},
       {"floorName" : "L4","floorMapName" :"HUANLESONG_L4.png"},
-      {"floorName" : "L5","floorMapName" :"HUANLESONG_L5.png"},
+      {"floorName" : "L3","floorMapName" :"HUANLESONG_L3.png"},
+      {"floorName" : "L2","floorMapName" :"HUANLESONG_L2.png"},
+      {"floorName" : "L1","floorMapName" :"HUANLESONG_L1.png"},
       {"floorName" : "B1","floorMapName" :"HUANLESONG_B1.png"}]
   },
   {
     "mallName" : "花园城",
     "mallDescription": "花园城庭院由不同景观组成团经小道、过廊、曲径等构成整体景色，景观小品、喷泉、叠水等点缀其间，相互辉映，洋溢着清新的迈阿密式海滨风格的异域风采。社区规划备有中小学，豪华会所，各类商业及餐饮等设施，生活配套式式俱全地处蛇口核心，与沃尔玛购物广场一桥相连，优越区位，自不待言。",
-    "floors": [{"floorName" : "L1","floorMapName" :"HUAYUANCHENG_L1.png"},
-      {"floorName" : "L2","floorMapName" :"HUAYUANCHENG_L2.png"},
-      {"floorName" : "L3","floorMapName" :"HUAYUANCHENG_L3.png"},
+    "floors": [{"floorName" : "L5","floorMapName" :"HUAYUANCHENG_L5.png"},
       {"floorName" : "L4","floorMapName" :"HUAYUANCHENG_L4.png"},
-      {"floorName" : "L5","floorMapName" :"HUAYUANCHENG_L5.png"}]
+      {"floorName" : "L3","floorMapName" :"HUAYUANCHENG_L3.png"},
+      {"floorName" : "L2","floorMapName" :"HUAYUANCHENG_L2.png"},
+      {"floorName" : "L1","floorMapName" :"HUAYUANCHENG_L1.png"}]
   },
   {
     "mallName" : "金光华",
     "mallDescription": "金光华广场是深圳第一家与地铁无缝连接的国际购物广场。业主将其定位为与国际高级商业中心接轨的大型现代Shopping Mall，建成后成为深圳最大的单体零售商业建筑，也是引领购物时尚的“未来的购物体验馆”。",
-    "floors": [{"floorName" : "L1","floorMapName" :"JINGUANGHUA_L1.png"},
-      {"floorName" : "L2","floorMapName" :"JINGUANGHUA_L2.png"},
-      {"floorName" : "L3","floorMapName" :"JINGUANGHUA_L3.png"},
-      {"floorName" : "L4","floorMapName" :"JINGUANGHUA_L4.png"},
-      {"floorName" : "L5","floorMapName" :"JINGUANGHUA_L5.png"},
+    "floors": [{"floorName" : "L7","floorMapName" :"JINGUANGHUA_L7.png"},
       {"floorName" : "L6","floorMapName" :"JINGUANGHUA_L6.png"},
-      {"floorName" : "L7","floorMapName" :"JINGUANGHUA_L7.png"},
+      {"floorName" : "L5","floorMapName" :"JINGUANGHUA_L5.png"},
+      {"floorName" : "L4","floorMapName" :"JINGUANGHUA_L4.png"},
+      {"floorName" : "L3","floorMapName" :"JINGUANGHUA_L3.png"},
+      {"floorName" : "L2","floorMapName" :"JINGUANGHUA_L2.png"},
+      {"floorName" : "L1","floorMapName" :"JINGUANGHUA_L1.png"},
       {"floorName" : "B1","floorMapName" :"JINGUANGHUA_B1.png"},
       {"floorName" : "B2","floorMapName" :"JINGUANGHUA_B2.png"}]
   },
@@ -99,68 +148,19 @@
       {"floorName" : "C","floorMapName" :"LIANCHENGXINTIANDI_C.png"}]
   },
   {
-    "mallName" : "COCOPRAK(福田)",
-    "mallDescription": "COCO Park是深圳最具时尚气质的购物中心，集餐饮、购物、休闲、娱乐多功能于一体。拥有200余家国际国内知名品牌。负一楼为吉之岛超市、国际连锁餐饮、珠宝配饰、个人护理、家居生活、影音、礼品店。",
-    "floors": [{"floorName" : "L1","floorMapName" :"N_COCOPARK_L1.png"},
-      {"floorName" : "L2","floorMapName" :"N_COCOPARK_L2.png"},
-      {"floorName" : "L3","floorMapName" :"N_COCOPARK_L3.png"},
-      {"floorName" : "B1","floorMapName" :"N_COCOPARK_B1.png"}]
-  },
-  {
-    "mallName" : "京基百纳广场(南山)",
-    "mallDescription": "深圳市京基百纳商业管理有限公司成立于2006年，是一家专业从事商业经营管理，提供全面化、系统化、专业化经营管理服务的公司，致力于打造成为中国商业地产服务标杆企业。公司的主营业务为商业地产投资及运营管理，在注重有效整合内部资源的同时，不断吸纳外部优秀资源。在管理和服务中实现自我规范、升级成长，现已通过ISO9001质量管理体系认证。公司努力铸造“管理体现服务、服务提升管理”的商业文化，在不断完善中致力于成为国内一流的专业商业管理公司。",
-    "floors": [{"floorName" : "L1","floorMapName" :"N_JINGJIBAINA_L1.png"},
-      {"floorName" : "L2","floorMapName" :"N_JINGJIBAINA_L2.png"},
-      {"floorName" : "L3","floorMapName" :"N_JINGJIBAINA_L3.png"},
-      {"floorName" : "B1","floorMapName" :"N_JINGJIBAINA_B1.png"}]
-  },
-  {
-    "mallName" : "KK MALL",
-    "mallDescription": "KK mall ，商业建筑面积达83500平方米，共五层，整体建筑形态完美，功能设施均达国际水准，基于深圳地标建筑、周边高星级酒店、写字楼众多，数十万等高端消费群集中、谋求差异化特色经营等特点，KK mall定位于“国际时尚精品购物中心”，致力于打造一个以集国际顶尖品牌及各种高端消费业态于一体的高品质国际购物中心，同时为深圳高端购物中心商圈焕发“第二春”揭开序幕。",
-    "floors": [{"floorName" : "L1","floorMapName" :"N_KKMALL_L1.png"},
-      {"floorName" : "L2","floorMapName" :"N_KKMALL_L2.png"},
-      {"floorName" : "L3","floorMapName" :"N_KKMALL_L3.png"},
-      {"floorName" : "L4","floorMapName" :"N_KKMALL_L4.png"},
-      {"floorName" : "B1","floorMapName" :"N_KKMALL_B1.png"}]
-  },
-  {
-    "mallName" : "深国投广场",
-    "mallDescription": "暂无介绍",
-    "floors": [{"floorName" : "L1","floorMapName" :"N_SHENGUOTOU_L1.png"},
-      {"floorName" : "L2","floorMapName" :"N_SHENGUOTOU_L2.png"},
-      {"floorName" : "L3","floorMapName" :"N_SHENGUOTOU_L3.png"},
-      {"floorName" : "B1","floorMapName" :"N_SHENGUOTOU_B1.png"}]
+   "mallName" : "宝能太古城",
+   "mallDescription": "璀璨于深圳湾中心路滨海豪宅商圈的宝能•all city购物中心，隶属宝能集团有限公司，集购物、休闲、餐饮、娱乐、文化、休闲于一体，是南山区购物与休闲的理想之地。宝能•all city与地铁二号线“海月站”无缝接驳，享有湾区所有的资源及配套，还将成为湾区的商业核心、文化中心、交流中心，将以国际繁华都市生活的代表全面推动湾区国际化城市进程，是当仁不让的湾区商业地标、时代旗舰。作为宝能集团在深圳全新打造的行业旗舰——宝能•all city购物中心将保持一贯的国际化风格，旨在汇聚国际风尚知名品牌，尽领潮流之巅；同时追求客户服务领域的精益求精，首创“购物中心五星级服务体系”，强调客户需求的定制化解决方案、消费的尊贵性体验，与我们全身心的服务。",
+   "floors": [{"floorName" : "L3","floorMapName" :"BAONENG_L3.png"},
+     {"floorName" : "L2","floorMapName" :"BAONENG_L2.png"},
+     {"floorName" : "L1","floorMapName" :"BAONENG_L1.png"},
+     {"floorName" : "B1","floorMapName" :"BAONENG_B1.png"},
+     {"floorName" : "B2","floorMapName" :"BAONENG_B2.png"}]
   },
   {
     "mallName" : "喜荟城",
     "mallDescription": "喜荟城地处罗湖百仕达片区太宁路上，东临东湖公园、爱国路，周边纵横交汇3条地铁线——3、5、7号线。喜荟城以时尚购物、跨界美食、欢乐家庭、艺文潮流构建多元功能组合。",
-    "floors": [{"floorName" : "L1","floorMapName" :"N_XIHUICHENG_L1.png"},
+    "floors": [{"floorName" : "L3","floorMapName" :"N_XIHUICHENG_L3.png"},
       {"floorName" : "L2","floorMapName" :"N_XIHUICHENG_L2.png"},
-      {"floorName" : "L3","floorMapName" :"N_XIHUICHENG_L3.png"}]
-  },
-  {
-    "mallName" : "益田假日广场",
-    "mallDescription": "益田假日广场， 中国首家国际化体验式购物中心，是商业与生活的完美融合， 地处深圳华侨城，紧临深南大道，占地3.5万平方米，总建筑面积13.58万平方米，是一个集体验式购物中心、生态写字体、五星级主题酒店为一体的大型建筑综合体。",
-    "floors": [{"floorName" : "L1","floorMapName" :"N_YITIAN_L1.png"},
-      {"floorName" : "L2","floorMapName" :"N_YITIAN_L2.png"},
-      {"floorName" : "L3","floorMapName" :"N_YITIAN_L3.png"},
-      {"floorName" : "B1","floorMapName" :"N_YITIAN_B1.png"},
-      {"floorName" : "B2","floorMapName" :"N_YITIAN_B2.png"}]
-  },
-  {
-    "mallName" : "万象城",
-    "mallDescription": "万象城（MIXC）是世界500强企业华润集团旗下开发的高品质购物中心，是中国购物中心行业的领跑者，万象城倡导国际化的消费理念，彰显时尚品味与优雅格调，引领全新的生活方式与消费潮流，它也是这座城市的超市名片。",
-    "floors": [{"floorName" : "L1","floorMapName" :"WANXIANGCHENG_L1.png"},
-      {"floorName" : "L2","floorMapName" :"WANXIANGCHENG_L2.png"},
-      {"floorName" : "L3","floorMapName" :"WANXIANGCHENG_L3.png"},
-      {"floorName" : "L4","floorMapName" :"WANXIANGCHENG_L4.png"},
-      {"floorName" : "L5","floorMapName" :"WANXIANGCHENG_L5.png"}]
-  },
-  {
-    "mallName" : "怡景中心城",
-    "mallDescription": "深圳市怡景中心城商业发展有限公司成立于2002年，是由深圳市怡景投资发展有限公司投资控股的一家商业地产类企业，公司于2002年投资七亿人民币开发。中心城位于深圳中心区CBD中央，由福华路、福华一路、中心四路、中心五路合围而成。",
-    "floors": [{"floorName" : "G","floorMapName" :"ZHONGXINCHENG_G.png"},
-      {"floorName" : "L","floorMapName" :"ZHONGXINCHENG_L.png"},
-      {"floorName" : "UG","floorMapName" :"ZHONGXINCHENG_UG.png"}]
+      {"floorName" : "L1","floorMapName" :"N_XIHUICHENG_L1.png"}]
   }
 ]
