@@ -1,0 +1,207 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  text-align:  center;
+  font-size: 0px;
+  background-size: 100%;
+  background-image: url("http://xiashopping.oicp.net/Image/bg.jpg");
+  -webkit-overflow-scrolling:touch;
+  -webkit-transform:translate3d(0,0,0);
+  -webkit-user-drag: none;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+
+ul,li{
+    margin: 0;
+    padding: 0;
+}
+
+#playMusic {
+    visibility: hidden;
+    position: absolute;
+    top : 20px;
+    right: 24px;
+    height: 61px;
+    width: 61px;
+    border-radius: 15.5px;
+    background-color: #ffffff;
+    text-align: center;
+    z-index: 10;
+}
+
+#Map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+}
+
+#Mall {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+}
+
+.mapBackground {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.mapTitle {
+    font-size: 48px;
+    text-align: center;
+    color: #ff7244;
+    position: relative;
+    top: 10px;
+}
+
+.mapSource {
+    position: relative;
+    float: left;
+    left: 20px;
+}
+
+.mapSubTitle {
+    text-align: left;
+    font-size: 48px;
+    height: 48px;
+    position: relative;
+    color: #a2d368;
+    left: 32px;
+    top: 20px;
+}
+
+.mapDetails {
+    font-size: 40px;
+    color: #cccccc;
+    position: relative;
+    left: 30px;
+    top: 20px;
+    line-height: 150%;
+    text-indent: 6em;
+    text-align: left;
+    width: 94%;
+}
+
+.mallList{
+    width: 54%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 0px;
+    line-height: 0px;
+    overflow: scroll;
+    overflow-y: hidden;
+    background-color: #f0f0f0;
+}
+
+.mallList li{
+    height: 160px;
+    width: 100%;
+    color: #333333;
+    font-size: 48px;
+    text-align: left;
+    text-indent: 32px;
+    padding-left: 0px;
+    float: left;
+    line-height: 160px;
+    border-bottom:1px solid #cccccc;
+}
+
+.mallList ul{
+    margin: 0;
+    height: 100%;
+    list-style-type: none;
+    overflow-y: auto;
+}
+
+.mallList .selected {
+    margin: 0;
+    padding: 0;
+    background-color: #e2e2e2;
+}
+
+.floorList {
+    width: 46%;
+    height: 0;
+    position: absolute;
+    background-color: #e2e2e2;
+    left: 54%;
+    top: 0px;
+}
+
+.floorList ul{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    list-style-type: none;
+}
+
+.floorList li{
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+    text-align: left;
+    text-indent: 32px;
+    height: 160px;
+    line-height: 160px;
+    border-bottom:0px solid #cccccc;
+}
+
+.floorList .selected{
+    color: #e95e37;
+}
+
+.logo {
+    width: 40%;
+    position: absolute;
+    left: 57%;
+    top: 73%;
+    font-size: 38px;
+    color: #cccccc;
+}
+
+.arrow {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: -100px;
+    left: 90%;
+    background-image: url("http://xiashopping.oicp.net/Image/icon_arrow.png");
+}
+
+.back {
+    position: relative;
+    float: left;
+    top: 64px;
+    left: 20px;
+    z-index: 20;
+}
+
+.dividingLine {
+    background-color: #cccccc;
+    height: 2px;
+    width: 97%;
+}
+
+.test {
+    font-size: 40px;
+    color: red;
+    z-index: 20;
+}
+
+
+@media all {
+
+}
