@@ -99,7 +99,7 @@ html
 
                 mapTitle.innerText = mall['mallName'] + floor['floorName'];
                 mapDetails.innerText = mall['mallDescription'];
-                mapSource.src = 'http://xiashopping.oicp.net/Map/' + floor['floorMapName'];
+                mapSource.src = '/Map/' + floor['floorMapName'];
 
                 $('#Mall').animate({'opacity':'0'},'normal','linear',function(){
                   $('.floorList .selected').removeClass('selected');
