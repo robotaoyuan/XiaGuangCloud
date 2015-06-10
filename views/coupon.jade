@@ -21,14 +21,14 @@ html
 
        div#mallCoupon
             ul
-            - for (var index in defaultMall['coupons'])
-              li
-                img(src='/Coupons/' + defaultMall['coupons'][index],width='100%')
+              - for (var index in defaultMall['coupons'])
+                li
+                  img(src='/Coupons/' + defaultMall['coupons'][index],width='100%')
 
        div#chooseMallList
             ul
              - for(var index in malls)
-                li(data_value=malls[index],onclick='javaScript:switchMall(this)')= malls[index]['mallName']
+                li(mallData=JSON.stringify(malls[index]))= malls[index]['mallName']
 
     script.
         var width = $(window).width();
@@ -38,9 +38,11 @@ html
             var chooseMall = $('#chooseMall');
             var chooseMallArrow = $('.chooseMallArrow');
             var chooseMallList = $('#chooseMallList');
+            var coupons = $('#mallCoupon');
             chooseMall.css({'left': 20,'top': 10,'width': parseFloat(width) - 40});
             chooseMallArrow.css({'width':40,'left': chooseMall.width() - 40 - 32});
             chooseMallList.css({'width':parseFloat(width) - 70,'left': 35,'top': chooseMall.offset().top + 44});
+            coupons.css({'top': parseFloat(chooseMall.css('top')) + 10});
             chooseMall.bind('click',function(){
                 if(chooseMallList.css('visibility') == 'hidden'){
                     chooseMallList.css({'visibility' : 'visible'});
@@ -49,10 +51,25 @@ html
                 }
             });
 
-            var coupons = $('#mallCoupon');
-            coupons.css({'top': parseFloat(chooseMall.css('top')) + 10});
-        });
+            $('#chooseMallList li').click(function (){
+                var mallData = JSON.parse(this.getAttribute('mallData'));
+                coupons.animate({'opacity':'0'},'normal','linear',function(){
+                    $('#chooseMall p').html(mallData['mallName']);
+                    coupons.empty();
+                    var ul = $('<ul></ul>');
+                    for (var index in mallData['coupons']){
+                        var coupon = mallData['coupons'][index];
+                        var src = '/Coupons/' + coupon;
+                        var img = $("<img>").attr({'src':src,'width':"100%"});
+                        var li = $("<li>");
+                        li.append(img);
+                        ul.append(li);
+                    }
+                    coupons.append(ul);
+                    coupons.animate({'opacity' :'1'},'normal','linear');
+                });
+                chooseMallList.css({'visibility' : 'hidden'});
+            });
 
-        function switchMall(object){
-            console.log(object.data_value);
-        }
+
+        });

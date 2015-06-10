@@ -41,7 +41,7 @@ module.exports = function(app){
                 return;
             }
             var results = JSON.parse(body)['results'];
-            if (results.length > 0){
+            if (results != undefined && results.length > 0){
                 var shopIds = undefined;
                 results.forEach(function(result){
                     if(shopIds == undefined){

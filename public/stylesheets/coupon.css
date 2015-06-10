@@ -46,11 +46,11 @@ ul li{
 }
 
 #mallCoupon ul{
-    float: left;
+    margin: 0;
+    padding: 0;
 }
 
 #mallCoupon li{
-    float: left;
     padding-bottom: 5px;
 }
 
