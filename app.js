@@ -24,9 +24,10 @@ app.use(cookieParser());
 
 
 // 路由控制
+oldRoutes(app);
 routes(app);
 new_routes(app);
-oldRoutes(app);
+
 
 // 如果任何路由都没匹配到，则认为 404
 // 生成一个异常让后面的 err handler 捕获

@@ -8,8 +8,8 @@ var _dzdpSecret = 'bc60b050c4404bb4b6fb4c3739fdac56';
 
 module.exports = function(app){
     app.get('/coupon',function(req,res){
-        var count = req.query('count');
-        var mallId = req.query('mallId');
+        var count = req.query['count'];
+        var mallId = req.query['mallId'];
         var param = {
             'has_deal':true,
             'mall':{
@@ -94,8 +94,8 @@ module.exports = function(app){
     });
 
     app.get('/coupon_1',function(req,res){
-        var count = req.query('count');
-        var mallId = req.query('mallId');
+        var count = req.query['count'];
+        var mallId = req.query['mallId'];
         var param = {
             'has_deal':true,
             'mall':{
@@ -336,7 +336,7 @@ module.exports = function(app){
 
     app.get('/dianping_has_groupBuying',function(req,res){
         var json = {};
-        var shopId = req.query("shopId");
+        var shopId = req.query['shopId'];
         if (shopId == undefined) {
             res.json({});
         }
@@ -357,7 +357,7 @@ module.exports = function(app){
     });
 
     app.get('/existence_PreferentialInformation',function(req,res){
-        var mallObjectId = req.query('objectId');
+        var mallObjectId = req.query['objectId'];
         var param = {
             'mall':{"__type":"Pointer","className":"Mall","objectId":mallObjectId},
             'switch':true

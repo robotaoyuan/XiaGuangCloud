@@ -14,4 +14,15 @@ route.get('/',function(req, res, next){
         res.render('error');
     });
 });
+
+route.get('/coupon',function(req,res,next){
+    fs.readFile('./public/coupons.json','utf8',function(error,data){
+        if(!error){
+            var malls = JSON.parse(data);
+            res.render('coupon' ,{'title' : '虾逛','malls':malls});
+            return;
+        }
+        res.render('error');
+    });
+});
 module.exports = route;

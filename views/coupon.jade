@@ -1,0 +1,58 @@
+doctype html
+html
+    head
+        title= title
+        meta(name='viewport', content='width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0')
+        meta(http-equiv='Content-Type', content='text/html', charset='utf-8')
+        meta(name='apple-touch-mobile-web-app-capable', content='yes')
+
+        link(rel='stylesheet', href='/stylesheets/coupon.css')
+        script(src='/JavaScript/jquery-2.1.4.min.js',type='text/javascript')
+
+    body
+       - var defaultMall = malls.length > 0 ? malls[0] : null;
+           - var name = '暂无商城'
+           - if(defaultMall != null)
+           - name = defaultMall['mallName']
+
+       div#chooseMall
+            img.chooseMallArrow(src='/Image/down_arrow.png')
+            p= name
+
+       div#mallCoupon
+            ul
+            - for (var index in defaultMall['coupons'])
+              li
+                img(src='/Coupons/' + defaultMall['coupons'][index],width='100%')
+
+       div#chooseMallList
+            ul
+             - for(var index in malls)
+                li(data_value=malls[index],onclick='javaScript:switchMall(this)')= malls[index]['mallName']
+
+    script.
+        var width = $(window).width();
+        var height = $(window).height();
+
+        $(function(){
+            var chooseMall = $('#chooseMall');
+            var chooseMallArrow = $('.chooseMallArrow');
+            var chooseMallList = $('#chooseMallList');
+            chooseMall.css({'left': 20,'top': 10,'width': parseFloat(width) - 40});
+            chooseMallArrow.css({'width':40,'left': chooseMall.width() - 40 - 32});
+            chooseMallList.css({'width':parseFloat(width) - 70,'left': 35,'top': chooseMall.offset().top + 44});
+            chooseMall.bind('click',function(){
+                if(chooseMallList.css('visibility') == 'hidden'){
+                    chooseMallList.css({'visibility' : 'visible'});
+                }else{
+                    chooseMallList.css({'visibility' : 'hidden'});
+                }
+            });
+
+            var coupons = $('#mallCoupon');
+            coupons.css({'top': parseFloat(chooseMall.css('top')) + 10});
+        });
+
+        function switchMall(object){
+            console.log(object.data_value);
+        }

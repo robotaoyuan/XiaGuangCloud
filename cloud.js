@@ -7,13 +7,6 @@ var async = require('async');
 var utility = require('./model/utility');
 
 /**
- * 一个简单的云代码方法
- */
-AV.Cloud.define('hello', function(request, response) {
-  response.success('Hello world!');
-});
-
-/**
  *      定时更新方法: 更新商城优惠信息
  *
  *      @success: 更新成功

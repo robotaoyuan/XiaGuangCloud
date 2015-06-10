@@ -1,0 +1,75 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    text-align:  center;
+    font-size: 0px;
+    background-size: 100%;
+    box-sizing: border-box;
+    background-image: url("/Image/bg.jpg");
+    -webkit-overflow-scrolling:touch;
+    overflow: hidden;
+}
+
+ul li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+#chooseMall {
+    width: 100%;
+    height: 45px;
+    background-color: #e5e5e5;
+    border-radius: 25px;
+    position: relative;
+    color: #333333;
+    font-size: 16px;
+    text-indent: 18px;
+    text-align: left;
+}
+
+.chooseMallArrow{
+    position: relative;
+}
+
+#chooseMall p{
+    position: relative;
+    top: -100%;
+    font-size: 16px;
+    line-height: 100%;
+}
+
+#mallCoupon {
+    width: 100%;
+    position: relative;
+}
+
+#mallCoupon ul{
+    float: left;
+}
+
+#mallCoupon li{
+    float: left;
+    padding-bottom: 5px;
+}
+
+#chooseMallList {
+    width: 100%;
+    visibility: hidden;
+    position: absolute;
+    background-color: #e5e5e5;
+    opacity: 0.9;
+    z-index: 100;
+}
+
+#chooseMallList li{
+    color: #333333;
+    width: 95%;
+    float: left;
+    text-align: left;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom:0.5px solid #b2b2b2;
+}
