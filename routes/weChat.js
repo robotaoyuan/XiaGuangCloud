@@ -25,4 +25,14 @@ route.get('/coupon',function(req,res,next){
         res.render('error');
     });
 });
+
+route.get('/jingji_coupon',function(req,res){
+    res.render('jingji_coupon',{'title' : '京基百纳优惠劵'});
+});
+
+
+route.get('/jingji_guanzhu',function(req,res){
+    res.render('jingji_guanzhu',{'title' : '京基百纳广场'});
+});
+
 module.exports = route;

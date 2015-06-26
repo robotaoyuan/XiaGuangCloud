@@ -2,6 +2,7 @@
  * Created by YunTop on 15/5/29.
  */
 var weChat = require('./weChat');
+var schedule = require('./schedule');
 
 module.exports = function(app){
 
@@ -10,4 +11,6 @@ module.exports = function(app){
      */
     app.use('/weChat',weChat);
 
+
+    app.use('/schedule',schedule);
 };

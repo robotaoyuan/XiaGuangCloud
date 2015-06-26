@@ -1,0 +1,36 @@
+html
+   head
+      title= title
+      meta(name='viewport', content='width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0')
+      meta(http-equiv='Content-Type', content='text/html', charset='utf-8')
+      meta(name='apple-touch-mobile-web-app-capable', content='yes')
+      link(rel='stylesheet', href='/stylesheets/temp_coupon.css')
+      script(src='/JavaScript/jquery-2.1.4.min.js',type='text/javascript')
+
+   body
+      div.qr
+         img#qrCode(src='/Image/jingji_qr.jpg',width= '100%')
+         p 长按识别二维码关注京基百纳微信公众号
+
+      div.detail
+         img#jingji_logo(src='/Image/logo_jingji.png')
+
+   script.
+       var width = $(window).width();
+       var height= $(window).height();
+       var design_width = 750.0;
+       $(function(){
+           var scale = design_width / width;
+
+           $('#qrCode').load(function(){
+               var img_width = $('#qrCode').width();
+               $('#qrCode').css({'width': img_width / scale + 'px', 'top': 190.0 / scale + 'px'});
+               $('.qr p').css({position: 'relative', top: $('#qrCode').offset().top + 15.0 / scale + 'px','font-size' : '15px'});
+           });
+
+           // 底部合作
+           $('#jingji_logo').load(function(){
+               $('#jingji_logo').css({'top': 180.0 / scale + $('#jingji_logo').height() + 50.0 + 'px', 'width': $('#jingji_logo').width() / scale + 'px', 'left': -10.0});
+           });
+
+       });

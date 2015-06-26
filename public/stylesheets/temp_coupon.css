@@ -1,0 +1,38 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    text-align:  center;
+    font-size: 0px;
+    background-size: 100%;
+    box-sizing: border-box;
+    background-image: url("/Image/jingji_bg.jpg");
+    -webkit-overflow-scrolling:touch;
+    overflow: hidden;
+}
+
+.qr {
+    width: 100%;
+    color: #333333;
+    font-size: 15px;
+}
+
+#qrCode {
+    border-radius: 10px;
+    position: relative;
+    -webkit-user-select: none;
+}
+
+
+.detail {
+    color: #666666;
+    font-size: 15px;
+}
+
+#jingji_logo{
+    position: relative;
+
+}
+
+#xiaguang_logo{
+    position: relative;
+}
