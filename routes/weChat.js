@@ -31,7 +31,7 @@ route.get('/jingji_coupon',function(req,res){
 });
 
 
-route.get('/jingji_guanzhu',function(req,res){
+route.get('/jingjiGuanzhu',function(req,res){
     res.render('jingji_guanzhu',{'title' : '京基百纳广场'});
 });
 
